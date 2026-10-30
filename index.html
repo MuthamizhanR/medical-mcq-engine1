@@ -1,148 +1,172 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>MedEngine Pro</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MEDTRIX Grand Unified Map</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600&family=Fira+Mono:wght@400;700&family=Nunito:wght@700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
     <link rel="stylesheet" href="style.css">
 
-<style>
-    /* --- RESPONSIVE DASHBOARD BUTTON --- */
-    .medtrix-home-btn {
-        position: fixed;
-        top: 20px;
-        left: 20px;
-        z-index: 10000;
-        background: rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        padding: 10px 20px;
-        border-radius: 30px;
-        color: white;
-        text-decoration: none;
-        font-family: 'Poppins', sans-serif;
-        font-weight: 600;
-        font-size: 14px;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-        transition: all 0.3s ease;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-    }
-
-    .medtrix-home-btn:hover {
-        background: rgba(255, 255, 255, 0.2);
-        transform: translateY(-2px);
-    }
-
-    /* MOBILE OPTIMIZATION */
-    @media (max-width: 600px) {
+    <style>
         .medtrix-home-btn {
-            top: 15px;
-            left: 15px;
-            padding: 8px 14px; /* Smaller padding */
-            font-size: 12px;   /* Smaller text */
-            border-radius: 20px;
-            background: rgba(0, 0, 0, 0.3); /* Darker contrast for mobile legibility */
+            position: fixed; top: 20px; left: 20px; z-index: 10000;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 10px 20px; border-radius: 30px;
+            color: white; text-decoration: none;
+            font-family: var(--sans); font-weight: 600; font-size: 14px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease; display: flex; align-items: center; gap: 8px;
         }
-        .medtrix-home-btn span {
-            font-size: 14px; /* Keep icon visible */
+        .medtrix-home-btn:hover { background: rgba(255, 255, 255, 0.2); transform: translateY(-2px); }
+        @media (max-width: 600px) {
+            .medtrix-home-btn {
+                top: 10px; left: 10px; padding: 8px 12px; font-size: 12px;
+                background: rgba(0, 0, 0, 0.4);
+            }
         }
-    }
-</style>
-
-
-<style>
-    /* --- DESKTOP SCROLLBAR CUSTOMIZATION --- */
-    /* Works on Chrome, Edge, Safari */
-    ::-webkit-scrollbar {
-        width: 12px;
-    }
-
-    ::-webkit-scrollbar-track {
-        background: #0f0c29; /* Match Background */
-    }
-
-    ::-webkit-scrollbar-thumb {
-        background-color: #1a1d29; /* Dark Grey Handle */
-        border-radius: 10px;
-        border: 2px solid #0f0c29; /* Padding effect */
-    }
-
-    ::-webkit-scrollbar-thumb:hover {
-        background-color: #00e676; /* Green on Hover (MEDTRIX Accent) */
-    }
-    
-    /* Firefox */
-    * {
-        scrollbar-width: thin;
-        scrollbar-color: #00e676 #0f0c29;
-    }
-</style>
-
+    </style>
 </head>
 <body>
 
-    <!-- MEDTRIX HOME BUTTON -->
-    <!-- MEDTRIX NAVIGATION BUTTON START -->
-<style>
-    .medtrix-home-btn {
-        position: fixed; top: 20px; left: 20px; z-index: 10000;
-        background: rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        padding: 10px 20px; border-radius: 30px;
-        color: white; text-decoration: none;
-        font-family: sans-serif; font-weight: 600; font-size: 14px;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-        transition: all 0.3s ease; display: flex; align-items: center; gap: 8px;
-    }
-    .medtrix-home-btn:hover { background: rgba(255, 255, 255, 0.2); transform: translateY(-2px); }
-    
-    /* MOBILE TWEAKS */
-    @media (max-width: 600px) {
-        .medtrix-home-btn {
-            top: 10px; left: 10px; padding: 8px 12px; font-size: 12px;
-            background: rgba(0, 0, 0, 0.4); /* Darker for visibility */
-        }
-    }
-</style>
-<a href="https://MuthamizhanR.github.io/MEDTRIX/" class="medtrix-home-btn">
-    <span>⬅️</span> Dashboard
-</a>
-<!-- MEDTRIX NAVIGATION BUTTON END -->
-    
+    <a href="https://MuthamizhanR.github.io/MEDTRIX/" class="medtrix-home-btn">
+        <span>⬅️</span> Dashboard
+    </a>
 
+    <!-- Layer 1: Hero -->
+    <header class="hero">
+        <div class="wrap">
+            <span class="hero-badge">Knowledge Graph Engine</span>
+            <h1 id="subject-title">MEDTRIX</h1>
 
-    <button class="theme-btn" onclick="App.toggleTheme()" aria-label="Toggle Dark Mode">
-        <i class="fa-solid fa-circle-half-stroke"></i>
-    </button>
-
-    <div id="app-shell">
-        
-        <header id="main-header">
-            <div class="logo-box" onclick="location.hash='#'">
-                <i class="fa-solid fa-heart-pulse"></i>
+            <div class="telemetry-row">
+                <div class="telemetry-item"><span class="num" id="stat-pillars">0</span><span class="label">Pillars</span></div>
+                <div class="telemetry-item"><span class="num" id="stat-submodules">0</span><span class="label">Topics</span></div>
+                <div class="telemetry-item"><span class="num" id="stat-questions">0</span><span class="label">Questions</span></div>
+                <div class="telemetry-item"><span class="num" id="stat-cases">60</span><span class="label">Clinical Cases</span></div>
+                <div class="telemetry-item"><span class="num" id="stat-cbme">17</span><span class="label">CBME Codes</span></div>
+                <div class="telemetry-item"><span class="num" id="stat-facts">5,117</span><span class="label">Atomic Facts</span></div>
             </div>
-            <h1>MEDTRIX <span class="version-tag">ENGINE</span></h1>
-            
-            <div class="search-wrapper">
-                <i class="fa-solid fa-search"></i>
-                <input type="text" id="searchInput" placeholder="Search library...">
-            </div>
-        </header>
+        </div>
+    </header>
 
-        <main id="main-container" class="grid">
-            </main>
-
+    <div class="wrap" style="margin-top:30px;">
+        <div class="subject-selector">
+            <select id="subject-select" onchange="App.loadSubject(this.value)">
+                <option value="">Select a Subject...</option>
+                <!-- Populated by JS -->
+            </select>
+        </div>
     </div>
 
+    <!-- MAIN DASHBOARD -->
+    <div id="dashboard-section" style="display: none;">
+
+        <!-- Layer 3: Hub-and-Spoke -->
+        <section>
+            <div class="wrap">
+                <div class="hub-svg-container" id="hub-container">
+                    <!-- SVG built dynamically via JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Layer 2: Mechanism Pillars Grid -->
+        <section>
+            <div class="wrap">
+                <h2>Mechanism Pillars</h2>
+                <div id="pillars-grid" class="grid">
+                    <!-- Cards populated via JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Layer 4: Cross-Pillar Connections -->
+        <section>
+            <div class="wrap">
+                <h2>Cross-Pillar Differential Map</h2>
+                <table class="cross-pillar-table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Concept</th>
+                            <th>Pillar A</th>
+                            <th>↔</th>
+                            <th>Pillar B</th>
+                            <th>Why the link matters</th>
+                        </tr>
+                    </thead>
+                    <tbody id="cross-pillar-body">
+                        <!-- Populated via JS -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Layer 5: Case Chains -->
+        <section>
+            <div class="wrap">
+                <h2>Integration Case Chains</h2>
+                <div class="chain-container" id="case-chains-container">
+                    <!-- Populated via JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Layer 6: Drug-Mechanism Map -->
+        <section>
+            <div class="wrap">
+                <h2>Intervention Hub</h2>
+                <div class="rx-grid" id="rx-grid">
+                    <!-- Populated via JS -->
+                </div>
+            </div>
+        </section>
+        
+        <!-- Layer 8: Speed Reference -->
+        <section>
+            <div class="wrap">
+                <h2>Operating Rules (Rapid Revision)</h2>
+                <div class="speed-grid" id="speed-grid">
+                    <!-- Populated via JS -->
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- MEDTRIX QUIZ UI (Hidden initially) -->
+    <div id="quiz-section">
+        <div class="wrap" style="padding-top: 50px;">
+            <div class="quiz-header">
+                <span class="id-badge" id="quiz-id-badge">Q-ID</span>
+                <span id="quiz-progress">1 / 10</span>
+            </div>
+            
+            <div class="question-box">
+                <div class="q-text" id="q-text">Question text goes here.</div>
+                <div id="q-images"></div>
+                <div class="options-stack" id="options-stack">
+                    <!-- Options populated via JS -->
+                </div>
+
+                <div class="explanation" id="explanation">
+                    <i class="fa-solid fa-circle-info"></i>
+                    <span id="expl-text">Explanation text goes here.</span>
+                </div>
+            </div>
+
+            <div class="footer-controls">
+                <button class="btn btn-secondary" onclick="App.quiz.prev()">Previous</button>
+                <button class="btn btn-primary" onclick="App.quiz.next()">Next</button>
+                <button class="btn btn-secondary" onclick="App.exitQuiz()">Exit</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Lightbox for Images -->
     <div id="lightbox" class="lightbox hidden" onclick="this.classList.add('hidden')">
         <img id="lightbox-img" src="" alt="Zoomed Medical Image">
     </div>
