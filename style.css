@@ -34,11 +34,6 @@
 
 * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
 
-*:focus-visible {
-  outline: 2px solid var(--link);
-  outline-offset: 2px;
-}
-
 body {
   background: var(--bg);
   color: var(--ink);

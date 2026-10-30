@@ -1,3 +1,0 @@
-## 2024-10-31 - Keyboard Accessibility for Custom Interactive Elements
-**Learning:** Custom interactive elements built with `div` or `span` (like quiz options or topic cards) often lack native keyboard accessibility, making them unusable for screen reader users or those navigating via keyboard. Simply adding an `onclick` handler is insufficient.
-**Action:** When creating custom button-like elements using generic tags, always include `role="button"`, `tabindex="0"` to enable focus, and an `onkeydown` event listener to trigger the same action via the 'Enter' and 'Space' keys. Additionally, ensure global `:focus-visible` styles are present to visually indicate focus.
