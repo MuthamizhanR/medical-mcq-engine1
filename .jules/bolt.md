@@ -1,0 +1,3 @@
+## 2024-10-30 - O(n²) Array Filtering in renderPillars()
+**Learning:** `renderPillars()` used a nested loop structure, filtering the full `activeQuestions` array for every topic to count questions per topic. This is an O(n*m) operation where n is topics and m is total questions. Given some subject data is up to 2.2MB (e.g. `Medicine.json`), this frequent recalculation on the frontend could cause noticeable UI freezing/blocking when switching subjects.
+**Action:** Replace nested array filtering in rendering methods with an O(n) hash map / frequency dictionary computed once per render or cached to ensure O(1) lookups during the topic iteration.

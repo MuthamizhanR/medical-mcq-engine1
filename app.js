@@ -140,9 +140,15 @@ const App = {
         const topics = this.data.syllabus[this.data.activeSubject] || [];
         let html = '';
 
+        // Precompute question counts per topic to change O(n*m) to O(n+m)
+        const topicCounts = {};
+        this.data.activeQuestions.forEach(q => {
+            topicCounts[q.topic] = (topicCounts[q.topic] || 0) + 1;
+        });
+
         topics.forEach((topic, i) => {
             // Count questions for this topic
-            const qCount = this.data.activeQuestions.filter(q => q.topic === topic).length;
+            const qCount = topicCounts[topic] || 0;
             const color = this.getPillarColor(i);
 
             html += `
