@@ -1,0 +1,3 @@
+## 2024-03-24 - Custom Interactive Element Keyboard Mapping
+**Learning:** When using non-semantic elements (like `div` or `span`) as interactive controls (such as quiz options), adding `role="button"` and `tabindex="0"` is insufficient for complete accessibility. Screen readers might announce them correctly, but they won't automatically trigger the click handler when `Enter` or `Space` is pressed, unlike native `<button>` or `<a>` elements.
+**Action:** Always ensure that custom interactive elements have explicit keyboard event handlers (e.g., `onkeydown`) that listen for `Enter` and `Space` keys to manually trigger the click action or execute the associated function.

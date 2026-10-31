@@ -288,7 +288,7 @@ const App = {
         document.getElementById('q-images').innerHTML = imgHtml;
 
         const optsHtml = q.options.map((opt, i) => {
-            return `<div class="option" onclick="App.handleAnswer(this, ${i}, '${q.correct_option}')">
+            return `<div class="option" role="button" tabindex="0" onclick="App.handleAnswer(this, ${i}, '${q.correct_option}')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault(); App.handleAnswer(this, ${i}, '${q.correct_option}');}">
                         ${String.fromCharCode(65 + i)}. ${opt}
                     </div>`;
         }).join('');
