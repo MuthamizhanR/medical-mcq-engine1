@@ -1,0 +1,3 @@
+## 2026-10-31 - [Main-Thread Blocking via Repeated JSON Parsing]
+**Learning:** Repeatedly fetching and parsing large static JSON files (e.g., 2.2MB Medicine.json) across subject switches blocks the main thread in this vanilla JS architecture. Since there's no state-management library that handles caching automatically, the `response.json()` parsing operation executes synchronously and causes UI stuttering even if the network request is browser-cached.
+**Action:** Always implement a simple object-based memory cache (`subjectCache: {}`) for large statically loaded datasets to skip the expensive parsing step entirely on subsequent accesses.

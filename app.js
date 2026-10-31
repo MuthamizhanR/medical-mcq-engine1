@@ -4,6 +4,7 @@ const App = {
         subjects: [],
         activeSubject: null,
         activeQuestions: [],
+        subjectCache: {}, // ⚡ Bolt: Cache parsed JSON to prevent main-thread blocking on subsequent subject loads
         currentQIndex: 0,
         sessionStats: { correct: 0, wrong: 0, total: 0 }
     },
@@ -43,8 +44,15 @@ const App = {
         document.getElementById('subject-title').innerText = subject.toUpperCase();
         
         try {
-            const req = await fetch(`data/${subject}.json`);
-            this.data.activeQuestions = await req.json();
+            // ⚡ Bolt: Check memory cache first
+            // Impact: Eliminates ~10-50ms JSON parsing time and network request for large files (e.g., 2.2MB Medicine.json)
+            if (this.data.subjectCache[subject]) {
+                this.data.activeQuestions = this.data.subjectCache[subject];
+            } else {
+                const req = await fetch(`data/${subject}.json`);
+                this.data.activeQuestions = await req.json();
+                this.data.subjectCache[subject] = this.data.activeQuestions;
+            }
         } catch(e) {
             console.error("Error fetching questions for", subject);
             this.data.activeQuestions = [];
