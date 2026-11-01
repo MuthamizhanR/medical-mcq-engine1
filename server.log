@@ -1,0 +1,16 @@
+127.0.0.1 - - [01/Nov/2026 22:28:18] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [01/Nov/2026 22:34:42] "GET /index.html HTTP/1.1" 200 -
+127.0.0.1 - - [01/Nov/2026 22:34:49] "GET /app.js HTTP/1.1" 200 -
+127.0.0.1 - - [01/Nov/2026 22:34:56] "GET /style.css HTTP/1.1" 200 -
+127.0.0.1 - - [01/Nov/2026 22:35:41] "GET /index.html HTTP/1.1" 200 -
+127.0.0.1 - - [01/Nov/2026 22:36:26] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [01/Nov/2026 22:36:26] "GET /app.js HTTP/1.1" 200 -
+127.0.0.1 - - [01/Nov/2026 22:36:26] "GET /style.css HTTP/1.1" 200 -
+127.0.0.1 - - [01/Nov/2026 22:36:27] "GET /data/syllabus.json HTTP/1.1" 200 -
+127.0.0.1 - - [01/Nov/2026 22:36:27] "GET /data/Anaesthesia.json HTTP/1.1" 200 -
+127.0.0.1 - - [01/Nov/2026 22:37:12] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [01/Nov/2026 22:37:12] "GET /app.js HTTP/1.1" 200 -
+127.0.0.1 - - [01/Nov/2026 22:37:12] "GET /style.css HTTP/1.1" 200 -
+127.0.0.1 - - [01/Nov/2026 22:37:12] "GET /data/syllabus.json HTTP/1.1" 200 -
+127.0.0.1 - - [01/Nov/2026 22:37:12] "GET /data/Anaesthesia.json HTTP/1.1" 200 -
+127.0.0.1 - - [01/Nov/2026 22:37:16] "GET /data/images/Anaesthesia_img_3.jpeg HTTP/1.1" 200 -
