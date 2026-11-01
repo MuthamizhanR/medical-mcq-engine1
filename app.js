@@ -5,7 +5,8 @@ const App = {
         activeSubject: null,
         activeQuestions: [],
         currentQIndex: 0,
-        sessionStats: { correct: 0, wrong: 0, total: 0 }
+        sessionStats: { correct: 0, wrong: 0, total: 0 },
+        subjectCache: {} // ⚡ Cache to store loaded subject JSON data
     },
 
     colors: ['var(--p1)', 'var(--p2)', 'var(--p3)', 'var(--p4)', 'var(--p5)', 'var(--p6)', 'var(--p7)'],
@@ -43,8 +44,15 @@ const App = {
         document.getElementById('subject-title').innerText = subject.toUpperCase();
         
         try {
-            const req = await fetch(`data/${subject}.json`);
-            this.data.activeQuestions = await req.json();
+            // ⚡ Bolt Optimization: Use memory cache to avoid redundant network IO
+            // and JSON parsing for large (~1-2MB) subject files when navigating.
+            if (this.data.subjectCache[subject]) {
+                this.data.activeQuestions = this.data.subjectCache[subject];
+            } else {
+                const req = await fetch(`data/${subject}.json`);
+                this.data.activeQuestions = await req.json();
+                this.data.subjectCache[subject] = this.data.activeQuestions;
+            }
         } catch(e) {
             console.error("Error fetching questions for", subject);
             this.data.activeQuestions = [];
