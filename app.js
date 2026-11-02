@@ -146,7 +146,7 @@ const App = {
             const color = this.getPillarColor(i);
 
             html += `
-                <div class="pcard" style="border-top-color: ${color}" onclick="App.startQuiz('${topic}')">
+                <div class="pcard" style="border-top-color: ${color}" onclick="App.startQuiz('${topic}')" tabindex="0" role="button" onkeydown="if(event.key === 'Enter' || event.key === ' ') { event.preventDefault(); App.startQuiz('${topic}'); }">
                     <h3>${topic}</h3>
                     <div class="quote">"Pathogenesis drives presentation"</div>
                     <div class="chips">
@@ -288,7 +288,7 @@ const App = {
         document.getElementById('q-images').innerHTML = imgHtml;
 
         const optsHtml = q.options.map((opt, i) => {
-            return `<div class="option" onclick="App.handleAnswer(this, ${i}, '${q.correct_option}')">
+            return `<div class="option" onclick="App.handleAnswer(this, ${i}, '${q.correct_option}')" tabindex="0" role="button" onkeydown="if(event.key === 'Enter' || event.key === ' ') { event.preventDefault(); App.handleAnswer(this, ${i}, '${q.correct_option}'); }">
                         ${String.fromCharCode(65 + i)}. ${opt}
                     </div>`;
         }).join('');
