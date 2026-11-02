@@ -1,0 +1,3 @@
+## 2024-11-02 - O(n²) nested array iteration in component rendering
+**Learning:** In highly dynamic client-side applications that load large JSON files without a backing database, `Array.filter().length` operations inside another `.forEach` loop over topics is a severe O(n²) performance bottleneck, especially for subjects like 'Medicine' which have over 100 topics and thousands of questions.
+**Action:** Always preprocess mapping requirements into a hash map / dictionary before rendering loops to bring time complexity down from O(n²) to O(n) for client-side data operations.
