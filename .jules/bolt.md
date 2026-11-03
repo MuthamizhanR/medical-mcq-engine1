@@ -1,0 +1,3 @@
+## 2024-11-04 - [Performance Bottleneck: O(N*M) Rendering for Pillars]
+**Learning:** Found a critical performance bottleneck in `app.js` during UI rendering. The `renderPillars` function was performing a nested iteration: for every topic (M), it iterated over the entire array of questions (N) using `Array.filter` to count questions. With subjects like Medicine containing over 1800 questions and 100+ topics, this `O(N*M)` operation caused blocking UI lag during initial data load.
+**Action:** Replace nested `Array.filter` calls within rendering loops with O(N) frequency maps (hash maps) constructed prior to the loop. This reduces time complexity to `O(N+M)` and significantly cuts down main-thread blocking times.
