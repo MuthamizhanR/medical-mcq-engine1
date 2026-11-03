@@ -364,6 +364,11 @@ svg text { font-family: var(--serif); fill: #fff; font-size: 14px; pointer-event
   padding-top: 12px;
 }
 
+.pcard:focus-visible, .option:focus-visible, .q-image:focus-visible, select:focus-visible {
+    outline: 2px solid var(--p2);
+    outline-offset: 2px;
+}
+
 /* QUIZ UI OVERRIDES */
 #quiz-section { display: none; }
 .quiz-header {

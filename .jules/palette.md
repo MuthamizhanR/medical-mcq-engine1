@@ -1,0 +1,3 @@
+## 2024-05-24 - Lack of Keyboard Support on Custom Interactive Elements
+**Learning:** In this vanilla design system, many custom interactive elements (like Pillar cards `.pcard` and Quiz options `.option`) were built using `<div>` elements with only `onclick` handlers, making them completely inaccessible to keyboard users and screen readers by default.
+**Action:** Next time I build or review custom UI components using non-semantic HTML tags (like `<div>` or `<span>`), I must ensure they include `role="button"`, `tabindex="0"`, and `onkeydown` event handlers to support `Enter` and `Space` key activation, mirroring native `<button>` behavior.
