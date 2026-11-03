@@ -140,9 +140,16 @@ const App = {
         const topics = this.data.syllabus[this.data.activeSubject] || [];
         let html = '';
 
+        // ⚡ Bolt Optimization: Pre-compute topic frequencies to avoid O(N*M) nested loop
+        // Reduces render time significantly for subjects with many questions (e.g., Medicine with 1800+ MCQs)
+        const topicCounts = {};
+        for (const q of this.data.activeQuestions) {
+            topicCounts[q.topic] = (topicCounts[q.topic] || 0) + 1;
+        }
+
         topics.forEach((topic, i) => {
             // Count questions for this topic
-            const qCount = this.data.activeQuestions.filter(q => q.topic === topic).length;
+            const qCount = topicCounts[topic] || 0;
             const color = this.getPillarColor(i);
 
             html += `
