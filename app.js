@@ -146,7 +146,7 @@ const App = {
             const color = this.getPillarColor(i);
 
             html += `
-                <div class="pcard" style="border-top-color: ${color}" onclick="App.startQuiz('${topic}')">
+                <button class="pcard" style="border-top-color: ${color}" onclick="App.startQuiz('${topic}')">
                     <h3>${topic}</h3>
                     <div class="quote">"Pathogenesis drives presentation"</div>
                     <div class="chips">
@@ -159,7 +159,7 @@ const App = {
                         <span>CH-${i+1}</span>
                         <span>CBME 1.${i}</span>
                     </div>
-                </div>
+                </button>
             `;
         });
 
@@ -288,9 +288,9 @@ const App = {
         document.getElementById('q-images').innerHTML = imgHtml;
 
         const optsHtml = q.options.map((opt, i) => {
-            return `<div class="option" onclick="App.handleAnswer(this, ${i}, '${q.correct_option}')">
+            return `<button class="option" onclick="App.handleAnswer(this, ${i}, '${q.correct_option}')">
                         ${String.fromCharCode(65 + i)}. ${opt}
-                    </div>`;
+                    </button>`;
         }).join('');
 
         document.getElementById('options-stack').innerHTML = optsHtml;

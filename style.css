@@ -155,6 +155,12 @@ h3 { font-family: var(--serif); font-size: 19px; color: #fff; }
 }
 
 .pcard {
+  text-align: left;
+  color: inherit;
+  font: inherit;
+  display: block;
+  width: 100%;
+
   background: var(--card);
   border: 1px solid var(--line);
   border-radius: 9px;
@@ -394,6 +400,12 @@ svg text { font-family: var(--serif); fill: #fff; font-size: 14px; pointer-event
 .options-stack { display: flex; flex-direction: column; gap: 12px; }
 
 .option {
+  text-align: left;
+  color: inherit;
+  font: inherit;
+  display: flex;
+  width: 100%;
+
     padding: 16px; border: 1px solid var(--line); border-radius: 6px;
     cursor: pointer; transition: all 0.2s;
     background: var(--card-nested);
@@ -438,3 +450,9 @@ svg text { font-family: var(--serif); fill: #fff; font-size: 14px; pointer-event
 .btn:disabled { opacity: 0.5; pointer-events: none; }
 
 .hidden { display: none !important; }
+
+/* Accessibility: Focus visible styles */
+:focus-visible {
+  outline: 2px solid var(--link);
+  outline-offset: 2px;
+}
