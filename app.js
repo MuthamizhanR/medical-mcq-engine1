@@ -5,7 +5,9 @@ const App = {
         activeSubject: null,
         activeQuestions: [],
         currentQIndex: 0,
-        sessionStats: { correct: 0, wrong: 0, total: 0 }
+        sessionStats: { correct: 0, wrong: 0, total: 0 },
+        subjectCache: {},
+        questionsByTopic: {}
     },
 
     colors: ['var(--p1)', 'var(--p2)', 'var(--p3)', 'var(--p4)', 'var(--p5)', 'var(--p6)', 'var(--p7)'],
@@ -42,12 +44,35 @@ const App = {
         this.data.activeSubject = subject;
         document.getElementById('subject-title').innerText = subject.toUpperCase();
         
-        try {
-            const req = await fetch(`data/${subject}.json`);
-            this.data.activeQuestions = await req.json();
-        } catch(e) {
-            console.error("Error fetching questions for", subject);
-            this.data.activeQuestions = [];
+        if (this.data.subjectCache[subject]) {
+            this.data.activeQuestions = this.data.subjectCache[subject].questions;
+            this.data.questionsByTopic = this.data.subjectCache[subject].byTopic;
+        } else {
+            try {
+                const req = await fetch(`data/${subject}.json`);
+                const questions = await req.json();
+                this.data.activeQuestions = questions;
+
+                // Build index
+                const byTopic = {};
+                for (const q of questions) {
+                    if (!byTopic[q.topic]) {
+                        byTopic[q.topic] = [];
+                    }
+                    byTopic[q.topic].push(q);
+                }
+                this.data.questionsByTopic = byTopic;
+
+                // Save to cache
+                this.data.subjectCache[subject] = {
+                    questions: questions,
+                    byTopic: byTopic
+                };
+            } catch(e) {
+                console.error("Error fetching questions for", subject);
+                this.data.activeQuestions = [];
+                this.data.questionsByTopic = {};
+            }
         }
 
         this.updateTelemetry();
@@ -142,7 +167,7 @@ const App = {
 
         topics.forEach((topic, i) => {
             // Count questions for this topic
-            const qCount = this.data.activeQuestions.filter(q => q.topic === topic).length;
+            const qCount = (this.data.questionsByTopic[topic] || []).length;
             const color = this.getPillarColor(i);
 
             html += `
@@ -251,7 +276,7 @@ const App = {
         document.getElementById('dashboard-section').style.display = 'none';
         document.getElementById('quiz-section').style.display = 'block';
         
-        const qList = this.data.activeQuestions.filter(q => q.topic === topic);
+        const qList = this.data.questionsByTopic[topic] || [];
         if(qList.length === 0) {
             alert("No questions found for this topic.");
             this.exitQuiz();
