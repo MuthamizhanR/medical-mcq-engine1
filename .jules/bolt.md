@@ -1,0 +1,3 @@
+## 2024-05-14 - O(T*Q) rendering bottleneck on Dashboard
+**Learning:** Found a major performance bottleneck where UI rendering scales poorly. The dashboard uses `topics.forEach` and then filters the entire `activeQuestions` list to count questions for each topic in `renderPillars`. This results in O(T*Q) operations where T is the number of topics (up to ~100) and Q is the number of questions (up to ~1800+ for large subjects like Medicine).
+**Action:** Always check nested loops when rendering UI lists. Pre-calculate aggregations (like question counts per topic) into an O(N) hash map before mapping over the UI components, to avoid `Array.filter` inside `Array.map` or `Array.forEach`.
