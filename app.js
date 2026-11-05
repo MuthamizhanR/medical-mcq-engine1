@@ -140,9 +140,15 @@ const App = {
         const topics = this.data.syllabus[this.data.activeSubject] || [];
         let html = '';
 
+        // ⚡ Bolt: Optimize question counting from O(T*Q) to O(Q+T) using a hash map
+        const questionCounts = {};
+        for (const q of this.data.activeQuestions) {
+            questionCounts[q.topic] = (questionCounts[q.topic] || 0) + 1;
+        }
+
         topics.forEach((topic, i) => {
-            // Count questions for this topic
-            const qCount = this.data.activeQuestions.filter(q => q.topic === topic).length;
+            // Retrieve pre-calculated count for this topic
+            const qCount = questionCounts[topic] || 0;
             const color = this.getPillarColor(i);
 
             html += `
