@@ -207,6 +207,11 @@ h3 { font-family: var(--serif); font-size: 19px; color: #fff; }
   outline: none;
 }
 
+.subject-selector select:focus-visible {
+  outline: 2px solid var(--p2);
+  outline-offset: 2px;
+}
+
 /* HUB SVG */
 .hub-svg-container { text-align: center; overflow: visible; margin-bottom: 40px; }
 svg text { font-family: var(--serif); fill: #fff; font-size: 14px; pointer-events: none; }
@@ -402,6 +407,7 @@ svg text { font-family: var(--serif); fill: #fff; font-size: 14px; pointer-event
 }
 
 .option:hover:not(.disabled) { border-color: #fff; background: rgba(255,255,255,0.05); }
+.option:focus-visible:not(.disabled) { border-color: var(--p2); outline: none; box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px var(--p2); }
 
 /* Feedback States */
 .option.selected-correct { border-color: var(--p3); background: rgba(17, 122, 101, 0.15); color: #fff; font-weight: 600; }
