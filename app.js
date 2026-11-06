@@ -4,6 +4,7 @@ const App = {
         subjects: [],
         activeSubject: null,
         activeQuestions: [],
+        questionCache: {}, // ⚡ Bolt: Cache to prevent refetching and reparsing large subject JSONs
         currentQIndex: 0,
         sessionStats: { correct: 0, wrong: 0, total: 0 }
     },
@@ -43,8 +44,14 @@ const App = {
         document.getElementById('subject-title').innerText = subject.toUpperCase();
         
         try {
-            const req = await fetch(`data/${subject}.json`);
-            this.data.activeQuestions = await req.json();
+            // ⚡ Bolt: Use cached data if available to prevent expensive fetch and JSON.parse
+            if (this.data.questionCache[subject]) {
+                this.data.activeQuestions = this.data.questionCache[subject];
+            } else {
+                const req = await fetch(`data/${subject}.json`);
+                this.data.activeQuestions = await req.json();
+                this.data.questionCache[subject] = this.data.activeQuestions;
+            }
         } catch(e) {
             console.error("Error fetching questions for", subject);
             this.data.activeQuestions = [];
