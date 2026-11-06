@@ -438,3 +438,12 @@ svg text { font-family: var(--serif); fill: #fff; font-size: 14px; pointer-event
 .btn:disabled { opacity: 0.5; pointer-events: none; }
 
 .hidden { display: none !important; }
+
+/* Focus Visible Styles for Keyboard Navigation */
+.pcard:focus-visible,
+.q-image:focus-visible,
+.option:focus-visible,
+#lightbox:focus-visible {
+  outline: 2px solid var(--link);
+  outline-offset: 2px;
+}
