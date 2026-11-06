@@ -146,7 +146,7 @@ const App = {
             const color = this.getPillarColor(i);
 
             html += `
-                <div class="pcard" style="border-top-color: ${color}" onclick="App.startQuiz('${topic}')">
+                <div class="pcard" style="border-top-color: ${color}" role="button" tabindex="0" onkeydown="if(event.key === 'Enter' || event.key === ' ') { event.preventDefault(); this.click(); }" onclick="App.startQuiz('${topic}')">
                     <h3>${topic}</h3>
                     <div class="quote">"Pathogenesis drives presentation"</div>
                     <div class="chips">
@@ -282,13 +282,13 @@ const App = {
         let imgHtml = '';
         if(q.images && q.images.length > 0) {
             imgHtml = q.images.map(img => 
-                `<img src="./data/images/${img}" class="q-image" onclick="App.openImage(this.src)" onerror="this.style.display='none'">`
+                `<img src="./data/images/${img}" class="q-image" role="button" tabindex="0" onkeydown="if(event.key === 'Enter' || event.key === ' ') { event.preventDefault(); this.click(); }" onclick="App.openImage(this.src)" onerror="this.style.display='none'">`
             ).join('');
         }
         document.getElementById('q-images').innerHTML = imgHtml;
 
         const optsHtml = q.options.map((opt, i) => {
-            return `<div class="option" onclick="App.handleAnswer(this, ${i}, '${q.correct_option}')">
+            return `<div class="option" role="button" tabindex="0" onkeydown="if(event.key === 'Enter' || event.key === ' ') { event.preventDefault(); this.click(); }" onclick="App.handleAnswer(this, ${i}, '${q.correct_option}')">
                         ${String.fromCharCode(65 + i)}. ${opt}
                     </div>`;
         }).join('');
